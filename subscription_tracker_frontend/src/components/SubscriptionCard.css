@@ -1,0 +1,217 @@
+.subscription-card {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  position: relative;
+  transition: transform var(--transition-base),
+    box-shadow var(--transition-base);
+  overflow: hidden;
+}
+
+.subscription-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.subscription-card.status-warning {
+  border-left: 3px solid var(--color-warning);
+}
+
+.subscription-card.status-overdue {
+  border-left: 3px solid var(--color-danger);
+}
+
+.subscription-card.status-canceled,
+.subscription-card.status-inactive {
+  opacity: 0.6;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  color: white;
+  flex-shrink: 0;
+}
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-info h3 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-category {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+}
+
+.card-price {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.price-amount {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.price-frequency {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Card Details */
+.card-details {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.detail-value {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background: rgba(52, 199, 89, 0.15);
+  color: var(--color-success);
+}
+
+.status-badge.inactive {
+  background: rgba(142, 142, 147, 0.15);
+  color: var(--color-text-secondary);
+}
+
+.status-badge.canceled {
+  background: rgba(255, 59, 48, 0.15);
+  color: var(--color-danger);
+}
+
+/* Card Alert */
+.card-alert {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 159, 10, 0.1);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-warning);
+}
+
+/* Card Actions */
+.card-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-md);
+  background: linear-gradient(
+    to top,
+    var(--color-bg-secondary) 60%,
+    transparent
+  );
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  pointer-events: none;
+}
+
+.card-actions.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.action-btn.delete {
+  color: var(--color-danger);
+}
+
+.action-btn.delete:hover {
+  background: rgba(255, 59, 48, 0.1);
+}
+
+/* Confirm Actions */
+.confirm-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.confirm-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.action-btn.confirm-yes {
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+.action-btn.confirm-yes:hover {
+  background: rgba(255, 59, 48, 0.1);
+}
+
+.action-btn.confirm-no {
+  color: var(--color-text-secondary);
+}
+
+.action-btn.confirm-no:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

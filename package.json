@@ -1,0 +1,14 @@
+{
+  "name": "subscription-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd subscription_tracker_backend && npm run dev",
+    "dev:frontend": "cd subscription_tracker_frontend && npm run dev",
+    "install:all": "cd subscription_tracker_backend && npm install && cd ../subscription_tracker_frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
