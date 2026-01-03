@@ -21,11 +21,11 @@ A full-stack subscription management application with an **Apple-inspired minima
 
 ### Landing Page
 
-![Landing Page](ui/Screenshot%202026-01-03%20at%2010.08.32%20PM.png)
+![Landing Page](ui/landing.png)
 
 ### Dashboard View
 
-![Dashboard](ui/Screenshot%202026-01-03%20at%2010.08.44%20PM.png)
+![Dashboard](ui/dashboard.png)
 
 ---
 
@@ -333,6 +333,43 @@ The UI follows Apple's design principles with:
 - **Upstash Workflow** for scheduled background jobs
 - Email reminders 7 days before renewal
 - Day-of renewal notifications
+
+### 📧 Email Notification System
+
+The app automatically sends email reminders to help users never miss a renewal:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  EMAIL REMINDER WORKFLOW                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  User adds subscription with renewal date: Jan 15           │
+│                     │                                        │
+│                     ▼                                        │
+│  ┌─────────────────────────────────────┐                    │
+│  │  Upstash Workflow schedules jobs:   │                    │
+│  │  • 7 days before (Jan 8)            │                    │
+│  │  • 5 days before (Jan 10)           │                    │
+│  │  • 2 days before (Jan 13)           │                    │
+│  │  • Day of renewal (Jan 15)          │                    │
+│  └─────────────────────────────────────┘                    │
+│                     │                                        │
+│                     ▼                                        │
+│  ┌─────────────────────────────────────┐                    │
+│  │     Nodemailer sends email:         │                    │
+│  │  "Your Netflix subscription         │                    │
+│  │   ($15.99/month) renews in 7 days"  │                    │
+│  └─────────────────────────────────────┘                    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**How it works:**
+
+1. When a subscription is created, a workflow is triggered via Upstash
+2. The workflow calculates reminder dates based on the renewal date
+3. At each scheduled time, Nodemailer sends a formatted email
+4. Users receive timely reminders to cancel or prepare for charges
 
 ---
 
