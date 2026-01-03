@@ -21,11 +21,11 @@ A full-stack subscription management application with an **Apple-inspired minima
 
 ### Landing Page
 
-![Landing Page](ui/landing.png)
+![Dashboard](ui/landing.png)
 
 ### Dashboard View
 
-![Dashboard](ui/dashboard.png)
+![Subscription creation](ui/dashboard.png)
 
 ---
 
